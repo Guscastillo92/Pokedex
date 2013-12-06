@@ -16,5 +16,9 @@ public class Pokemon {
 		type = t;
 		stats = s;
 	}
+	Pokemon (String n){
+		name = n;
+		//temp constructor for testing 
+	}
 
 }
