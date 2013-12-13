@@ -28,7 +28,9 @@ import android.widget.SearchView;
 import android.widget.TextView;
 
 public class MainActivity extends ListActivity {
+	//initialize some global variables
 	protected ArrayList <Pokemon> Pokemonlist;
+	protected ArrayList <Pokemon> searchList;
 	protected PokemonAdapter dex ;
 	protected PokemonFilter PFilter;
     @Override
@@ -37,12 +39,14 @@ public class MainActivity extends ListActivity {
         String pokemon = "didnt work";
         setContentView(R.layout.activity_main);
         try {
-			pokemon = getPokemon();
+			pokemon = getPokemon(); //gets the PokemonJSON
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-         Pokemonlist = parsePokemon(pokemon);
-        dex = new PokemonAdapter(this,
+         Pokemonlist = parsePokemon(pokemon);//parses the pokemon JSON
+         //Creates the Pokemon Adapter and displays the list with the pokemon
+         searchList = Pokemonlist;
+        dex = new PokemonAdapter(this, 
 				R.layout.pkmnentry,
 				R.id.pokemonName,
 				Pokemonlist);
@@ -50,6 +54,7 @@ public class MainActivity extends ListActivity {
         
 	
     }
+    //PokemonAdapter that holds a custom view
 	private class PokemonAdapter extends ArrayAdapter<Pokemon>{
 		public PokemonAdapter(Context context, int resource, int textViewResourceId, List<Pokemon> objects){
 		super(context, resource,textViewResourceId, objects);			
@@ -66,11 +71,12 @@ public class MainActivity extends ListActivity {
 				v = convertView;
 				
 			}
+			//set the variables in the view
 			TextView text = (TextView) v.findViewById(R.id.pokemonName);
 			ImageView icon = (ImageView) v.findViewById(R.id.pokemonIcon);
 			Pokemon pkmn = getItem(position);
 			String pkmnIcon = "p"+pkmn.getID();
-			Log.d("Gus", pkmnIcon);
+			//fetches the name of the icon so that it can be set as a drawable
 			int id = getResources().getIdentifier( pkmnIcon, "drawable", getPackageName());
 			icon.setImageResource(id);
 			text.setText(pkmn.getName());
@@ -78,12 +84,15 @@ public class MainActivity extends ListActivity {
 		}
 		@Override
 		public Filter getFilter() {
+			//implemented my own filter for a search option
 		    if (PFilter == null)
 		    	PFilter = new PokemonFilter();
 		     
 		    return PFilter;
 		}
 	}
+	//Custom Filter got the main code from http://www.survivingwithandroid.com/2012/10/android-listview-custom-filter-and.html
+	//Modified to fit my project
 	private class PokemonFilter extends Filter {
 	    @Override
 	    protected FilterResults performFiltering(CharSequence constraint) {
@@ -99,7 +108,7 @@ public class MainActivity extends ListActivity {
 	            List<Pokemon> temp = new ArrayList<Pokemon>();
 	             
 	            for (Pokemon p : Pokemonlist) {
-	                if (p.getName().contains(constraint.toString()))
+	                if (p.getName().toUpperCase().contains(constraint.toString().toUpperCase()))
 	                    temp.add(p);
 	            }
 	             
@@ -107,6 +116,7 @@ public class MainActivity extends ListActivity {
 	            results.count = temp.size();
 	     
 	        }
+	        searchList= (ArrayList<Pokemon>) results.values;
 	        return results;    
 	    }
 	 
@@ -116,7 +126,7 @@ public class MainActivity extends ListActivity {
 	        if (results.count == 0){
 	        	
 	        }
-	        else {
+	        else {//reset the list adapter to the new adapter here
 	        	dex = new PokemonAdapter(MainActivity.this,
 	    				R.layout.pkmnentry,
 	    				R.id.pokemonName,
@@ -128,6 +138,7 @@ public class MainActivity extends ListActivity {
 	}
     
     public String getPokemon() throws IOException {
+    	//gets the json from assets and stores it into a string
         InputStream file = getAssets().open("Pokemon.json");
 
         byte[] data = new byte[file.available()];
@@ -136,12 +147,13 @@ public class MainActivity extends ListActivity {
         return new String(data);
     }
     public ArrayList<Pokemon> parsePokemon(String pkmnJSON){
+    	//parses the json to create pokemon objects
     	ArrayList<Pokemon> PokemonL = new ArrayList<Pokemon>();
     	JSONArray jsonPkmn;
     	try{
     		jsonPkmn = new JSONArray(pkmnJSON);
 			for(int x = 0; x < jsonPkmn.length()-1; x++){
-				//Will parse JSON into Pokemon object Hide and show progress bar in this method
+				// Could not get progress bar to work here so I scrapped it
 				JSONObject temppkmn = jsonPkmn.getJSONObject(x);
 				JSONArray JAtype = temppkmn.getJSONArray("type");
 				JSONObject JAstats = temppkmn.getJSONObject("stats");
@@ -176,11 +188,14 @@ public class MainActivity extends ListActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         MenuItem searchItem = menu.findItem(R.id.search);
+        //Use this to get my action bar to do a search
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
 
 			@Override
 			public boolean onQueryTextChange(String arg0) {
+				//This is where the query is read user can submit or simply type
+				//and it will search
 				dex.getFilter().filter(arg0);
 				return false;
 			}
@@ -196,7 +211,9 @@ public class MainActivity extends ListActivity {
     }
     @Override
 	public void onListItemClick(ListView listView, View view, int position, long id){
-    	Pokemon temp = Pokemonlist.get(position);
+    	//This call for the PokemonActivity based on what list item is clicked on
+    	
+    	Pokemon temp = searchList.get(position);
     	SelPokemon dexentry = SelPokemon.getInstance();
     	dexentry.setPokemon(temp);
     	Intent i = new Intent(this, PokemonActivity.class);

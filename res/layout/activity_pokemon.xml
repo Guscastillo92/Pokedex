@@ -31,7 +31,18 @@
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        <TextView 
+        <LinearLayout
+            android:orientation="vertical"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content" >
+        	<TextView 
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:textColor="#FFFFFFFF"
+            android:layout_height="wrap_content"
+        	android:text="@string/typeOne" />
+            <TextView 
             android:id="@+id/typeOne"
             android:gravity="center"
             android:layout_margin="10dp"
@@ -39,7 +50,19 @@
             android:textColor="#FFFFFFFF"
             android:layout_height="wrap_content"
         	android:text="@string/NA" />
-        <TextView 
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content" >
+        	<TextView 
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:textColor="#FFFFFFFF"
+            android:layout_height="wrap_content"
+        	android:text="@string/typeTwo" />
+            <TextView 
             android:id="@+id/typeTwo"
             android:gravity="center"
             android:layout_margin="10dp"
@@ -47,6 +70,9 @@
             android:textColor="#FFFFFFFF"
             android:layout_height="wrap_content"
         	android:text="@string/NA" />
+        </LinearLayout>
+        
+
     </LinearLayout>
     <LinearLayout 
         android:id="@+id/pkmnInfo"

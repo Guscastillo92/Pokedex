@@ -1,5 +1,5 @@
 package com.example.pokedex;
-
+//Singleton to pass data between the two activities
 public class SelPokemon {
 	private static SelPokemon instance = null;
 	private Pokemon selected;

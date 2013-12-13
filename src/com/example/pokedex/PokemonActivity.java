@@ -29,6 +29,7 @@ public class PokemonActivity extends Activity {
 		pkmnPic = (ImageView) findViewById(R.id.pkmnPic);
 		SelPokemon instance = SelPokemon.getInstance();
 		Pokemon currPokemon = instance.getPokemon();
+		//gets all the views and sets it equal to the pokemons data
 		new fetchPokemonimg().execute(currPokemon.getImg());
 		TextView pkmnClass = (TextView) findViewById(R.id.pClass);
 		TextView pkmnHeight = (TextView) findViewById(R.id.pHeight);
@@ -103,7 +104,7 @@ public class PokemonActivity extends Activity {
 		
 		
 	}
-	//used from Paint App
+	//used from Paint App to do an asynctask to fetch and apply pokemon image
 	private class fetchPokemonimg extends AsyncTask<String, Void, Bitmap> {
 		/**
 		 * The system calls this to perform work in a worker thread and delivers
@@ -122,6 +123,7 @@ public class PokemonActivity extends Activity {
 			pkmnPic.setBackgroundDrawable(d);
 		}
 	}
+	//Also used from paint App to get the bitmap from online
 	private Bitmap imgFetcher(String s) {
 		Bitmap img = null;
 		URL url;

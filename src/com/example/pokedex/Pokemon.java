@@ -3,7 +3,7 @@ package com.example.pokedex;
 import java.util.ArrayList;
 
 public class Pokemon {
-	private String name;
+	private String name; //Pokemon Variables
 	private int id;
 	private String pClass;
 	private String Height;
@@ -14,6 +14,7 @@ public class Pokemon {
 	private int[] stats;
 	
 	public Pokemon (String n, int i, String I,String url, ArrayList <String> t, int[] s,String c, String h, String w){
+		//Constructor for a whole Pokemon
 		setName(n);
 		setID(I);
 		setId(i);
@@ -28,6 +29,7 @@ public class Pokemon {
 		setName(n);
 		//temp constructor for testing 
 	}
+	//Setters and Getters
 	public String getName() {
 		return name;
 	}

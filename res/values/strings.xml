@@ -8,6 +8,8 @@
     <string name="returnB">Return</string>
     <string name="Icon">Pokemon Icon</string>
     <string name="Search">Search</string>
+    <string name="typeOne">Type 1</string>
+    <string name="typeTwo">Type 2</string>
     <string name="NA">N/A</string>
 
 </resources>
