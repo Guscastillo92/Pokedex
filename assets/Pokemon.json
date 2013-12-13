@@ -10377,8 +10377,8 @@
   },
   {
     "id": "029",
-    "name": "Nidoran?",
-    "img": "http://img.pokemondb.net/artwork/nidoran?.jpg",
+    "name": "Nidoran(f)",
+    "img": "http://img.pokemondb.net/artwork/nidoran-f.jpg",
     "type": [
       "Poison"
     ],
@@ -11711,8 +11711,8 @@
   },
   {
     "id": "032",
-    "name": "Nidoran?",
-    "img": "http://img.pokemondb.net/artwork/nidoran?.jpg",
+    "name": "Nidoran(m)",
+    "img": "http://img.pokemondb.net/artwork/nidoran-m.jpg",
     "type": [
       "Poison"
     ],

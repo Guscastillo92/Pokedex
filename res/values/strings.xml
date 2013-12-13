@@ -2,7 +2,12 @@
 <resources>
 
     <string name="app_name">Pokedex</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Gustavo Castillo</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_pokemon">PokemonActivity</string>
+    <string name="returnB">Return</string>
+    <string name="Icon">Pokemon Icon</string>
+    <string name="Search">Search</string>
+    <string name="NA">N/A</string>
 
 </resources>

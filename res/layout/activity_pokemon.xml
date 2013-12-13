@@ -1,0 +1,128 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF000000"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".PokemonActivity" >
+
+    <TextView
+        android:id="@+id/pknmName"
+        android:textSize="35sp" 
+        android:textColor="#FFFFFFFF"
+        android:layout_margin="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_world" />
+    <ImageView
+        android:id="@+id/pkmnPic"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"        
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:contentDescription="@string/Icon"/>
+    <LinearLayout 
+        android:id="@+id/pknmType"
+        android:layout_below="@id/pknmName"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView 
+            android:id="@+id/typeOne"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:layout_width="60dp"
+            android:textColor="#FFFFFFFF"
+            android:layout_height="wrap_content"
+        	android:text="@string/NA" />
+        <TextView 
+            android:id="@+id/typeTwo"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:layout_width="60dp"
+            android:textColor="#FFFFFFFF"
+            android:layout_height="wrap_content"
+        	android:text="@string/NA" />
+    </LinearLayout>
+    <LinearLayout 
+        android:id="@+id/pkmnInfo"
+        android:layout_below="@id/pknmType"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView 
+            android:id="@+id/pClass"
+            android:layout_margin="2dp"
+            android:layout_width="140dp"
+            android:textColor="#FFFFFFFF"
+            android:layout_height="wrap_content"
+        	android:text="@string/NA" />
+        <TextView 
+            android:id="@+id/pHeight"
+            android:layout_margin="2dp"
+            android:layout_width="wrap_content"
+            android:textColor="#FFFFFFFF"
+            android:layout_height="wrap_content"
+        	android:text="@string/NA" />
+        <TextView 
+            android:id="@+id/pWeight"
+            android:layout_margin="2dp"
+            android:layout_width="wrap_content"
+            android:textColor="#FFFFFFFF"
+            android:layout_height="wrap_content"
+        	android:text="@string/NA" />
+    </LinearLayout>
+    <LinearLayout 
+        android:orientation="vertical"
+        android:layout_below="@id/pkmnPic"
+        android:layout_alignParentRight="true" 
+        android:layout_margin="10dp"
+        android:id="@+id/pknmStats"
+        android:textColor="#FFFFFFFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView 
+            android:id="@+id/Health"
+            android:layout_width="wrap_content"
+            android:textColor="#FFFFFFFF"
+            android:layout_height="wrap_content"
+        	android:text="@string/NA" />
+        <TextView 
+            android:id="@+id/Attack"
+            android:textColor="#FFFFFFFF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+        	android:text="@string/NA" />
+        <TextView 
+            android:id="@+id/Defense"
+            android:textColor="#FFFFFFFF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+        	android:text="@string/NA" />
+        <TextView 
+            android:id="@+id/spAttack"
+            android:textColor="#FFFFFFFF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+        	android:text="@string/NA" />
+        <TextView 
+            android:id="@+id/spDefense"
+            android:textColor="#FFFFFFFF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+        	android:text="@string/NA" />
+        <TextView 
+            android:id="@+id/Speed"
+            android:textColor="#FFFFFFFF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+        	android:text="@string/NA" />
+    </LinearLayout>
+
+
+</RelativeLayout>
